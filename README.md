@@ -62,8 +62,8 @@ The easiest way to deploy your Tablify app is to use the Vercel Platform from th
 
 Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-**Deployed Site:** [Your Deployment Website Link](#)
+**Deployed Site:** [Deployment Website Link](https://tablify-data.vercel.app/)
 
-![Tablify Preview: Before tabular data](public/preview-img-1.png)
+<!-- ![Tablify Preview: Before tabular data](public/preview-img-1.png)
 
-![Tablify Preview: After tabular data](public/preview-img-2.png)
+![Tablify Preview: After tabular data](public/preview-img-2.png) -->
