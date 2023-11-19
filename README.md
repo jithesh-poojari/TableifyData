@@ -1,10 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Tablify
+
+Tablify is a web application built with [Next.js](https://nextjs.org/) that allows users to fetch and display tabular data from an API URL. It provides a user-friendly interface to input the API URL, fetch data, and visualize it in a responsive table.
+
+## Features
+
+- **Dynamic Data Rendering:** Tablify dynamically renders tabular data based on the API response.
+- **Recursive Table Display:** Supports nested objects and arrays of objects, displaying them recursively in the table.
+- **Dark Mode:** Enjoy a dark mode for a comfortable viewing experience, especially in low-light environments.
+- **Swipeable Table:** Easily navigate through horizontally overflowing tables on touch and mouse devices.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Clone the repository
+git clone https://github.com/your-username/tablify.git
+cd tablify
+
+# Install dependencies
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+
+# Run the development server
 npm run dev
 # or
 yarn dev
@@ -12,25 +33,37 @@ yarn dev
 pnpm dev
 # or
 bun dev
+# Tablify
 ```
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Enter the API URL in the input field.
+2. Click the "Fetch Data" button to retrieve and display the tabular data.
+3. Optionally, toggle between dark and light modes for a personalized viewing experience.
+4. Navigate horizontally through the table using touch or mouse swipe gestures.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Example Data
 
-## Learn More
+To quickly test the application, you can click the "Example Data" button, and the API URL will be set to [https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users).
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Contributions are welcome! Feel free to open issues or submit pull requests to enhance the functionality or fix any bugs.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License
+
+This project is licensed under the MIT License.
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The easiest way to deploy your Tablify app is to use the Vercel Platform from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+**Deployed Site:** [Deployment Website Link](https://tablify-data.vercel.app/)
+
+<!-- ![Tablify Preview: Before tabular data](public/preview-img-1.png)
+
+![Tablify Preview: After tabular data](public/preview-img-2.png) -->
