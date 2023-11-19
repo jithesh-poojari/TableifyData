@@ -1,3 +1,8 @@
+"use client";
+
+import { useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
+
 const DataTable = ({ data }) => {
   // Function to recursively render data
   const renderData = (item, headers) => {
@@ -29,14 +34,22 @@ const DataTable = ({ data }) => {
     return <p className="text-red-500">Invalid data format.</p>;
   }
 
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => setScrollLeft(prev => prev + 100),
+    onSwipedRight: () => setScrollLeft(prev => Math.max(prev - 100, 0)), // Ensure scrollLeft is never negative
+    // trackMouse: true,
+  });
+
   return (
-    <div className="overflow-hidden rounded-md shadow-md">
-      <div className="overflow-auto max-h-[76vh] ">
-        <table className="min-w-full bg-white " >
+    <div className="overflow-hidden bg-white border rounded-md shadow-md dark:bg-gray-800 dark:border-gray-600 dark:shadow-gray-700 ">
+      <div className="overflow-auto max-h-[76vh]" {...handlers}>
+        <table className="min-w-full" style={{ marginLeft: `-${scrollLeft}px` }}>
           <thead>
-            <tr className="bg-blue-300">
+            <tr className="bg-blue-300 dark:bg-blue-800">
               {headers.map((header, index) => (
-                <th key={index} className="px-4 py-2">
+                <th key={index} className="px-4 py-2 text-gray-800 dark:text-gray-300">
                   {header}
                 </th>
               ))}
@@ -44,7 +57,7 @@ const DataTable = ({ data }) => {
           </thead>
           <tbody>
             {data.map((item, rowIndex) => (
-              <tr key={rowIndex} className={(rowIndex % 2 === 0) ? 'bg-gray-50' : 'bg-white'}>
+              <tr key={rowIndex} className={(rowIndex % 2 === 0) ? 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200' : 'bg-white text-gray-800 dark:bg-gray-700 dark:text-gray-200'}>
                 {renderData(item, headers)}
               </tr>
             ))}
