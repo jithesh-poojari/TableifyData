@@ -16,7 +16,7 @@ const Header = () => {
             alt="Logo of tablify"
             className="object-contain"
           />
-          <h1 className="text-3xl font-semibold">Tablify</h1>
+          <h1 className="text-xl font-semibold md:text-3xl">Tablify</h1>
         </div>
       </Link>
       <div className="flex items-center space-x-4">
@@ -26,7 +26,7 @@ const Header = () => {
           target="blank"
           className="text-black dark:text-gray-300"
         >
-          <SiGithub className="w-6 h-6" />
+          <SiGithub className="w-6 h-6 text-black dark:text-gray-300" />
         </Link>
       </div>
     </div>

@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <div className="container flex flex-col gap-4 p-4 mx-auto">
+      <div className="container flex flex-col gap-2 p-2 mx-auto md:gap-4 md:p-4">
         <Header />
         <ApiInput onSubmit={handleApiSubmit} />
         {fetchedData && <DataTable data={fetchedData} />}

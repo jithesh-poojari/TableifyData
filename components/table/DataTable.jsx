@@ -1,19 +1,14 @@
-"use client";
-
-import { useState } from 'react';
-import { useSwipeable } from 'react-swipeable';
-
 const DataTable = ({ data }) => {
   // Function to recursively render data
   const renderData = (item, headers) => {
     return headers.map((header, colIndex) => (
-      <td key={colIndex} className="px-4 py-2">
+      <td key={colIndex} className="px-2 py-1 md:py-2 md:px-4">
         {typeof item[header] === 'object' ? (
           // If the property is an object, render it recursively
           <DataTable data={item[header]} />
         ) : (
           // Display other properties directly
-          item[header].toString() // Convert boolean values to strings
+          item[header].toString() 
         )}
       </td>
     ));
@@ -34,22 +29,14 @@ const DataTable = ({ data }) => {
     return <p className="text-red-500">Invalid data format.</p>;
   }
 
-  const [scrollLeft, setScrollLeft] = useState(0);
-
-  const handlers = useSwipeable({
-    onSwipedLeft: () => setScrollLeft(prev => prev + 100),
-    onSwipedRight: () => setScrollLeft(prev => Math.max(prev - 100, 0)), // Ensure scrollLeft is never negative
-    // trackMouse: true,
-  });
-
   return (
-    <div className="overflow-hidden bg-white border rounded-md shadow-md dark:bg-gray-800 dark:border-gray-600 dark:shadow-gray-700 ">
-      <div className="overflow-auto max-h-[76vh]" {...handlers}>
-        <table className="min-w-full" style={{ marginLeft: `-${scrollLeft}px` }}>
+    <div className="overflow-x-hidden bg-white border rounded-md shadow-md dark:bg-gray-800 dark:border-gray-600 dark:shadow-gray-700 ">
+      <div className="overflow-auto md:max-h-[76vh] text-sm md:text-base" >
+        <table className="min-w-full">
           <thead>
             <tr className="bg-blue-300 dark:bg-blue-800">
               {headers.map((header, index) => (
-                <th key={index} className="px-4 py-2 text-gray-800 dark:text-gray-300">
+                <th key={index} className="px-2 py-1 text-gray-800 md:py-2 md:px-4 dark:text-gray-300">
                   {header}
                 </th>
               ))}
