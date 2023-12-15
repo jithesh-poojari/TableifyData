@@ -35,6 +35,12 @@ pnpm dev
 bun dev
 # Tablify
 ```
+### Create .env file like in .env.example file
+```
+# create a environment variable for your Google Tracking Id
+GA_TRACKING_ID=your-tracking-id-here
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
 ## Usage
