@@ -2,6 +2,7 @@ import { Poppins } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import Provider from "@components/Provider";
 import "./globals.css";
+import GoogleAnalytics from "@components/config/GoogleAnalytics";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -19,6 +20,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      {process.env.GA_TRACKING_ID && (
+        <GoogleAnalytics GA_TRACKING_ID={process.env.GA_TRACKING_ID} />
+      )}
       <body className={poppins.className}>
         <Provider>
           {children}
