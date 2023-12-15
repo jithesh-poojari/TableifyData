@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from 'react';
+import { useState } from "react";
+import ActionButton from "./ActionBtn";
 
 const ApiInput = ({ onSubmit }) => {
-  const [apiUrl, setApiUrl] = useState('');
+  const [apiType, setApiType] = useState("api url"); // Default to API URL
+  const [apiUrl, setApiUrl] = useState("");
 
   const handleInputChange = (e) => {
     setApiUrl(e.target.value);
@@ -11,42 +13,71 @@ const ApiInput = ({ onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(apiUrl);
+    onSubmit(apiType, apiUrl);
   };
 
   const handleExampleDataClick = () => {
-    const exampleApiUrl = 'https://jsonplaceholder.typicode.com/users';
+    const exampleApiUrl = "https://jsonplaceholder.typicode.com/users";
+    setApiType("api url");
     setApiUrl(exampleApiUrl);
-    onSubmit(exampleApiUrl);
+    onSubmit("api url", exampleApiUrl);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col items-center justify-between p-4 bg-white border rounded-md shadow-md md:gap-2 dark:bg-gray-800 md:flex-row dark:border-gray-600 dark:shadow-gray-700">
-      <label htmlFor="apiUrl" className="block mb-2 font-bold text-gray-700 dark:text-gray-300 md:flex-shrink-0 md:mb-0">
-        API URL
-      </label>
-      <input
-        id="apiUrl"
-        className="w-full p-2 mb-2 bg-gray-200 border rounded-md md:mb-0 focus:outline-none focus:shadow-outline-blue dark:bg-gray-700 dark:border-gray-500 dark:text-white md:w-fit md:flex-grow"
-        type="text"
-        value={apiUrl}
-        onChange={handleInputChange}
-        placeholder="Enter API URL"
-      />
-      <div className="flex w-full gap-2 md:w-fit">
-        <button
-          className="w-1/2 px-4 py-2 font-bold text-white bg-blue-600 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue dark:bg-blue-700 dark:hover:bg-blue-500 md:w-fit"
-          type="submit"
-        >
-          Fetch Data
-        </button>
-        <button
-          className="w-1/2 px-4 py-2 font-bold text-white bg-green-500 rounded hover:bg-green-700 focus:outline-none focus:shadow-outline-green dark:bg-green-700 dark:hover:bg-green-500 md:w-fit"
-          type="button"
+    <form className="flex flex-col items-center justify-between p-2 bg-white border rounded-md shadow-md md:p-4 md:gap-2 dark:bg-gray-800 md:flex-row dark:border-gray-600 dark:shadow-gray-700">
+      <div className="relative w-full mb-2 text-sm font-semibold md: md:max-w-min md:text-base md:mb-0 dark:bg-gray-700 dark:border-gray-500 dark:text-white md:w-fit md:flex-grow ">
+        <div className="w-full p-2 text-center bg-white border-2 rounded-md cursor-pointer peer whitespace-nowrap">
+          {apiType.toUpperCase()} 
+        </div>
+       <div className="absolute left-0 hidden peer-hover:block hover:block">
+       <div className="mt-2 bg-white divide-y-2 rounded-md shadow-md ">
+          <div className="px-4 py-2 text-gray-800 cursor-pointer dark:text-white hover:bg-gray-100 hover:text-gray-900 whitespace-nowrap">
+            API URL
+          </div>
+          <div className="px-4 py-2 text-gray-800 cursor-pointer dark:text-white hover:bg-gray-100 hover:text-gray-900 whitespace-nowrap">
+            JSON Text
+          </div>
+          <div className="px-4 py-2 text-gray-800 cursor-pointer dark:text-white hover:bg-gray-100 hover:text-gray-900 whitespace-nowrap">
+            JSON File
+          </div>
+        </div>
+       </div>
+      </div>
+
+      {apiType === "api url" && (
+        <input
+          id="apiUrl"
+          className="w-full p-2 text-sm bg-gray-200 border rounded-md md:text-base focus:outline-none focus:shadow-outline-blue dark:bg-gray-700 dark:border-gray-500 dark:text-white md:w-fit md:flex-grow focus:border-blue-500"
+          type="text"
+          value={apiUrl}
+          onChange={handleInputChange}
+          placeholder="Enter API URL"
+        />
+      )}
+      {apiType === "json text" && (
+        <textarea
+          id="apiText"
+          className="w-full h-[42px] p-2 text-sm bg-gray-200 border rounded-md max-h-64 min-h-[42px] md:text-base focus:outline-none focus:shadow-outline-blue dark:bg-gray-700 dark:border-gray-500 dark:text-white md:w-fit md:flex-grow focus:border-blue-500"
+          value={apiUrl}
+          onChange={handleInputChange}
+          placeholder="Enter JSON Text"
+        />
+      )}
+      {apiType === "json file" && (
+        <input
+          id="apiFile"
+          className="w-full h-[42px] p-2 text-sm bg-gray-200 border rounded-md md:text-base focus:outline-none focus:shadow-outline-blue dark:bg-gray-700 dark:border-gray-500 dark:text-white md:w-fit md:flex-grow focus:border-blue-500"
+          type="file"
+          onChange={(e) => setApiUrl(e.target.files[0])}
+        />
+      )}
+      <div className="flex w-full gap-2 mt-2 md:w-fit md:mt-0">
+        <ActionButton label="Fetch Data" color="blue" onClick={handleSubmit} />
+        <ActionButton
+          label="Example Data"
+          color="green"
           onClick={handleExampleDataClick}
-        >
-          Example Data
-        </button>
+        />
       </div>
     </form>
   );
