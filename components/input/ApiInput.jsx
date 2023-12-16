@@ -8,13 +8,20 @@ const ApiInput = ({ onSubmit }) => {
   const [input, setInput] = useState("");
 
   const handleInputChange = (e) => {
+    if (e.target.id == "apiText") {
+      e.target.style.height = "auto";
+      e.target.style.height = `${e.target.scrollHeight}px`;
+      if (e.target.value == "") {
+        e.target.style.height = "42px";
+      }
+    }
     setInput(e.target.value);
   };
 
   const handleInputTypeChange = (val) => {
-    setInput("")
+    setInput("");
     setInputType(val);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
