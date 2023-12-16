@@ -8,17 +8,17 @@ import Header from "@components/header/Header";
 export default function Home() {
   const [fetchedData, setFetchedData] = useState(null);
 
-  const handleApiSubmit = async (apiType, apiValue) => {
+  const handleApiSubmit = async (inputType, input) => {
     try {
       let data;
-      if (apiType === "json file") {
-        const fileContent = await readFileContents(apiValue);
+      if (inputType === "json file") {
+        const fileContent = await readFileContents(input);
         data = JSON.parse(fileContent);
-      } else if (apiType === "json text") {
-        console.log(apiValue);
-        data = JSON.parse(apiValue);
-      } else if (apiType === "api url") {
-        const response = await fetch(apiValue);
+      } else if (inputType === "json text") {
+        console.log(input);
+        data = JSON.parse(input);
+      } else if (inputType === "api url") {
+        const response = await fetch(input);
         data = await response.json();
       } else {
         console.error("Select correct Format and give Input");
