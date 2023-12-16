@@ -38,25 +38,25 @@ const ApiInput = ({ onSubmit }) => {
   return (
     <form className="flex flex-col items-center justify-between p-2 bg-white border rounded-md shadow-md md:p-4 md:gap-2 dark:bg-gray-800 md:flex-row dark:border-gray-600 dark:shadow-gray-700">
       <div className="relative w-full mb-2 text-sm font-semibold md: md:max-w-min md:text-base md:mb-0 dark:bg-gray-700 dark:border-gray-500 dark:text-white md:w-fit md:flex-grow ">
-        <div className="w-full p-2 text-center bg-white border-2 rounded-md cursor-pointer peer whitespace-nowrap">
+        <div className="w-full p-2 text-center bg-white border-2 rounded-md cursor-pointer peer whitespace-nowrap dark:text-white dark:bg-gray-800">
           {inputType.toUpperCase()}
         </div>
         <div className="absolute left-0 hidden peer-hover:block hover:block">
           <div className="mt-2 bg-white divide-y-2 rounded-md shadow-md ">
             <div
-              className="px-4 py-2 text-gray-800 cursor-pointer dark:text-white hover:bg-gray-100 hover:text-gray-900 whitespace-nowrap"
+              className="px-4 py-2 text-gray-800 cursor-pointer dark:text-white hover:bg-gray-100 hover:text-gray-900 whitespace-nowrap dark:bg-gray-800"
               onClick={() => handleInputTypeChange("api url")}
             >
               API URL
             </div>
             <div
-              className="px-4 py-2 text-gray-800 cursor-pointer dark:text-white hover:bg-gray-100 hover:text-gray-900 whitespace-nowrap"
+              className="px-4 py-2 text-gray-800 cursor-pointer dark:text-white hover:bg-gray-100 hover:text-gray-900 whitespace-nowrap dark:bg-gray-800"
               onClick={() => handleInputTypeChange("json text")}
             >
               JSON Text
             </div>
             <div
-              className="px-4 py-2 text-gray-800 cursor-pointer dark:text-white hover:bg-gray-100 hover:text-gray-900 whitespace-nowrap"
+              className="px-4 py-2 text-gray-800 cursor-pointer dark:text-white hover:bg-gray-100 hover:text-gray-900 whitespace-nowrap dark:bg-gray-800"
               onClick={() => handleInputTypeChange("json file")}
             >
               JSON File

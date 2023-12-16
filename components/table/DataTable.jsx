@@ -12,7 +12,6 @@ const DataTable = ({ data }) => {
         flattenedHeaders.push(currentKey);
       }
     }
-    console.log(flattenedHeaders);
     return flattenedHeaders;
   };
 
@@ -26,7 +25,10 @@ const DataTable = ({ data }) => {
     };
 
     return flattenedHeaders.map((header, colIndex) => (
-      <td key={colIndex} className="px-2 py-1 md:py-2 md:px-4">
+      <td
+        key={colIndex}
+        className="px-2 py-1 border border-gray-200 md:py-2 md:px-4 dark:border-gray-600"
+      >
         {header.split(".").reduce((acc, key) => acc?.[key], item) !==
         undefined ? (
           renderCellValue(
@@ -53,13 +55,13 @@ const DataTable = ({ data }) => {
   return (
     <div className="overflow-x-hidden bg-white border rounded-md shadow-md dark:bg-gray-800 dark:border-gray-600 dark:shadow-gray-700">
       <div className="overflow-auto md:max-h-[76vh] text-sm md:text-base">
-        <table className="min-w-full">
+        <table className="min-w-full border-collapse">
           <thead>
             <tr className="bg-blue-300 dark:bg-blue-800">
               {headers.map((header, index) => (
                 <th
                   key={index}
-                  className="px-2 py-1 text-gray-800 md:py-2 md:px-4 dark:text-gray-300"
+                  className="px-2 py-1 text-gray-800 border border-gray-200 md:py-2 md:px-4 dark:text-gray-300 dark:border-gray-600"
                 >
                   {header}
                 </th>
