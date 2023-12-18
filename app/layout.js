@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import Provider from "@components/Provider";
 import "./globals.css";
 import GoogleAnalytics from "@components/config/GoogleAnalytics";
+import { Toaster, toast } from 'sonner'
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
       )}
       <body className={poppins.className}>
         <Provider>
+        <Toaster richColors position="top-center" />
           {children}
           <Analytics />
         </Provider>

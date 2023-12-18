@@ -4,6 +4,7 @@ import { useState } from "react";
 import ApiInput from "@components/input/ApiInput";
 import DataTable from "@components/table/DataTable";
 import Header from "@components/header/Header";
+import { toast } from "sonner";
 
 export default function Home() {
   const [fetchedData, setFetchedData] = useState(null);
@@ -11,23 +12,23 @@ export default function Home() {
   const handleApiSubmit = async (inputType, input) => {
     try {
       let data;
+      if(input == "") return toast.error('Please enter input');
       if (inputType === "json file") {
         const fileContent = await readFileContents(input);
         data = JSON.parse(fileContent);
       } else if (inputType === "json text") {
-        console.log(input);
         data = JSON.parse(input);
       } else if (inputType === "api url") {
         const response = await fetch(input);
         data = await response.json();
       } else {
-        console.error("Select correct Format and give Input");
+        toast.error("Select correct Format and give Input");
       }
       setFetchedData(data);
-      console.log(data);
+      toast.success("Data fetched successfully");
     } catch (error) {
       console.error("Error fetching data:", error);
-    }
+    } 
   };
   const readFileContents = (file) => {
     return new Promise((resolve, reject) => {
