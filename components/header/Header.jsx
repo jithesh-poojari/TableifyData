@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import DarkModeBtn from "./DarkModeBtn";
 import { SiGithub } from "react-icons/si";
-import LogoImg from "@public/logo.png";
+import LogoImg from "@public/logo.svg";
 
 const Header = () => {
   return (
