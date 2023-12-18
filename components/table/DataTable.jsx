@@ -53,7 +53,7 @@ const DataTable = ({ data }) => {
   }
 
   return (
-    <div className="overflow-x-hidden bg-white border rounded-md shadow-md dark:bg-gray-800 dark:border-gray-600 dark:shadow-gray-700">
+    <div className="overflow-x-hidden bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 dark:shadow-gray-700">
       <div className="overflow-auto md:max-h-[76vh] text-sm md:text-base">
         <table className="min-w-full border-collapse">
           <thead>
